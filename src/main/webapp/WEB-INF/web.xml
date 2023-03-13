@@ -16,5 +16,34 @@
         <!-- le motif d'url (par exemple *.html ou /servlet) -->
         <url-pattern>/HelloServlet</url-pattern>
     </servlet-mapping>
+
+    <!-- la déclaration de la servlet -->
+    <servlet>
+        <servlet-name>InscripServlet</servlet-name>
+        <!-- le nom de la classe implémentant la servlet (précédé du nom du package) -->
+        <servlet-class>com.example.testb.InscripServlet</servlet-class>
+    </servlet>
+    <!-- l'association de la servlet avec un motif d'URL -->
+    <servlet-mapping>
+        <servlet-name>InscripServlet</servlet-name>
+        <!-- le motif d'url (par exemple *.html ou /servlet) -->
+        <url-pattern>/inscripservlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- l'association de la servlet avec un motif d'URL -->
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <!-- le motif d'url (par exemple *.html ou /servlet) -->
+        <url-pattern>/loginservlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <!-- le nom de la classe implémentant la servlet (précédé du nom du package) -->
+        <servlet-class>com.example.testb.LoginServlet</servlet-class>
+    </servlet>
+
+
 </web-app>
+
 

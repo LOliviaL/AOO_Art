@@ -2,12 +2,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Bienvenue</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            font-family: "Hoefler";
+            background: url("https://zupimages.net/up/23/11/3lik.jpg") no-repeat center center;
+            height: 100vh;
+            background-size: cover;
+        }
+    </style>
+
 </head>
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Bienvenue dans Notre Art Gallery" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="${pageContext.request.contextPath}/inscripservlet">Inscrivez-Vous !</a>
+<br>
+<a href="${pageContext.request.contextPath}/loginservlet">Connectez-Vous !</a>
+
 </body>
 </html>
