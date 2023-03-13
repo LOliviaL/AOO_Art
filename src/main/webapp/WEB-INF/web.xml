@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+    <!-- la déclaration de la servlet -->
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <!-- le nom de la classe implémentant la servlet (précédé du nom du package) -->
+        <servlet-class>com.example.testb.HelloServlet</servlet-class>
+    </servlet>
+
+    <!-- l'association de la servlet avec un motif d'URL -->
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <!-- le motif d'url (par exemple *.html ou /servlet) -->
+        <url-pattern>/HelloServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
+
