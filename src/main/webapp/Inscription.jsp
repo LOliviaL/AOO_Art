@@ -134,7 +134,7 @@
             et comment nous utilisons les cookies et autres technologies
             similaires en consultant notre Politique d’utilisation des cookies.</p>
         <hr>
-        <p align="center"> <a href="${pageContext.request.contextPath}/loginservlet" class="con"> Vous avez un compte ? </a> <a href="${pageContext.request.contextPath}/loginservlet" class="con"> Connectez-vous </a> </p>
+        <p align="center"> <a href="/loginservlet" class="con"> Vous avez un compte ? </a> <a href="Login.jsp" class="con"> Connectez-vous </a> </p>
     </div>
 
 </form>

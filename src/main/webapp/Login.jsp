@@ -122,7 +122,7 @@
 
 <body>
 
-<form id="connexionForm" action="${pageContext.request.contextPath}/login-servlet" method="post">
+<form id="connexionForm" action="/loginservlet" method="post">
     <div class="login-box">
         <h1> Login </h1>
         <div class="txt-box">

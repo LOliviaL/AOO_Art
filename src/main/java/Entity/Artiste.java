@@ -16,6 +16,7 @@ public class Artiste {
 
     }
     public String getSurname() {
+
         return this.surname;
     }
     public void setSurname(String surname) {
@@ -24,6 +25,7 @@ public class Artiste {
     }
 
     public String getPhoto() {
+
         return this.photo;
     }
     public void setPhoto(String photo) {
@@ -31,10 +33,12 @@ public class Artiste {
 
     }
     public Date getDateNaiss() {
+
         return this.dateNaiss;
     }
 
     public Date getDateDeces() {
+
         return this.dateDeces;
     }
 

@@ -43,18 +43,7 @@ public class User {
         this.password=password;
     }
 
-    public boolean connexion(){
-        String pseudo = getPseudo();
-        String password = getPassword();
 
-        /*if (User(pseudo,password)){
-           return true;
-        }
-        else{
-
-        }*/
-        return false;
-    }
 
 
 }
