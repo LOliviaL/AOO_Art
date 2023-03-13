@@ -19,9 +19,9 @@
 <h1><%= "Bienvenue dans Notre Art Gallery" %>
 </h1>
 <br/>
-<a href="${pageContext.request.contextPath}/inscripservlet">Inscrivez-Vous !</a>
+<a href="Inscription.jsp">Inscrivez-Vous !</a>
 <br>
-<a href="${pageContext.request.contextPath}/loginservlet">Connectez-Vous !</a>
+<a href="Login.jsp">Connectez-Vous !</a>
 
 </body>
 </html>
