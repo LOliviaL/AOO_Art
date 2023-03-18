@@ -58,11 +58,12 @@
         </div>
       </div>
     </nav>
-<form action="toeuvre" method="GET">
+<form id="myForm" action="toeuvre" method="GET">
   <div class="container mb-3">
     <table class="table">
       <thead>
       <tr>
+        <th scope="col">Id</th>
         <th scope="col">Nom</th>
         <th scope="col">Photo</th>
         <th scope="col">Prix d'estimation</th>
@@ -72,11 +73,35 @@
       </tr>
       </thead>
       <tbody>
-      <c:forEach items="${oeuvre_list}" var="item">
+      <c:forEach var="oeuv" items="${listoeuvre}">
+
         <tr>
-          <td>${item.getName()}</td>
+          <td>
+            <c:out value="${oeuv.Id}" />
+          </td>
+          <td>
+            <c:out value="${oeuv.name}" />
+          </td>
+          <td>
+            <c:out value="${oeuv.photo}" />
+          </td>
+          <td>
+            <c:out value="${oeuv.estimationPrice}" />
+          </td>
+          <td>
+            <c:out value="${oeuv.description}" />
+          </td>
+          <td>
+              <c:out value="${oeuv.dateCreation}" />
+          <td>
+          <td>
+              <c:out value="${oeuv.nameArtiste}" />
+          <td>
+            <a href="edit?name=<c:out value='${oeuv.name}' />">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="delete?name=<c:out value='${oeuv.name}' />">Delete</a>
+          </td>
         </tr>
       </c:forEach>
+
 
       </tbody>
 

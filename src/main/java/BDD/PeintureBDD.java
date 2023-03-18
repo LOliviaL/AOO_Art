@@ -62,6 +62,35 @@ public class PeintureBDD extends Bdd{
         return rowInsert;
     }
 
+    public boolean updatePeinture (Peinture peinture) throws SQLException {
+        jbdcConnection=getConnect();
+        String update = "UPDATE peinture SET photo=?,estimationPrice=?,description=?,dateCreation=?,nameArtiste=? WHERE name=?";
+        PreparedStatement preparedStatement = jbdcConnection.prepareStatement(update);
+        preparedStatement.setString(1, peinture.getPhoto());
+        preparedStatement.setFloat(2, peinture.getEstimationPrice());
+        preparedStatement.setString(3, peinture.getDescription());
+        preparedStatement.setDate(4, (java.sql.Date) peinture.getDateCreation());
+        preparedStatement.setString(5, peinture.getNameArtiste());
+        preparedStatement.setString(6, peinture.getName());
+
+        boolean rowInsert = preparedStatement.executeUpdate()>0;
+        preparedStatement.close();
+        deconnect();
+        return rowInsert;
+
+    }
+    public  boolean deletePeinture (String name) throws SQLException {
+        jbdcConnection= getConnect();
+        String delet = "DELETE FROM peinture WHERE name = ?";
+        PreparedStatement preparedStatement = jbdcConnection.prepareStatement(delet);
+        preparedStatement.setString(1, name);
+
+        boolean rowInsert = preparedStatement.executeUpdate()>0;
+        preparedStatement.close();
+        deconnect();
+        return rowInsert;
+
+    }
 
 
 }

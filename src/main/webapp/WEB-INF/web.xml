@@ -28,6 +28,14 @@
         <servlet-name>tousoeuvre</servlet-name>
         <servlet-class>com.example.testb.TousOeuvreServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editpeinture</servlet-name>
+        <servlet-class>com.example.testb.EditPeintureServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletpeinture</servlet-name>
+        <servlet-class>com.example.testb.DeletPeintureServlet</servlet-class>
+    </servlet>
 
 
 
@@ -54,6 +62,14 @@
     <servlet-mapping>
         <servlet-name>tousoeuvre</servlet-name>
         <url-pattern>/toeuvre</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>editpeinture</servlet-name>
+    <url-pattern>/edito</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletpeinture</servlet-name>
+        <url-pattern>/deleto</url-pattern>
     </servlet-mapping>
 
 

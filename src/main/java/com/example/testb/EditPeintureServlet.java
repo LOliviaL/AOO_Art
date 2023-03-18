@@ -11,27 +11,23 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-import static java.lang.System.out;
-
-@WebServlet(name = "insepeinture", urlPatterns = "/ipein")
-public class InsertPeintureServlet extends HttpServlet {
+@WebServlet(name = "editpeinture", value = "/edito")
+public class EditPeintureServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("MesOeuvre.jsp");
-        dispatcher.forward(request,response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try {
-            insertPeintureServlet(request, response);
+            updatePeintureServlet(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-    private void insertPeintureServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    private void updatePeintureServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         PrintWriter out=response.getWriter();
         String name = request.getParameter("name");
         String photo = request.getParameter("photo");
@@ -42,11 +38,12 @@ public class InsertPeintureServlet extends HttpServlet {
 
         Peinture newpeintur= new Peinture(name, photo,description, Float.parseFloat(estimationPrice), Date.valueOf(dateCreation), nameArtiste);
         PeintureBDD peintureBDD =new PeintureBDD();
-        boolean status = peintureBDD.insertPeinture(newpeintur);
+        boolean status = peintureBDD.updatePeinture(newpeintur);
 
         if(status){
             out.print("<p>Record saved successfully!</p>");
-            request.getRequestDispatcher("MesOeuvre.jsp").include(request, response);
+            response.sendRedirect("MesOeuvre.jsp");
+
         }else{
             out.println("Sorry! unable to save record");
         }

@@ -8,7 +8,7 @@ public class Bdd {
     protected static String jbdcURL = "jdbc:mysql://localhost:8889/Art?autoReconnect=true&useSSL=false";
     protected static String userName = "root";
     protected static String userPassword = "root";
-    protected Connection jbdcConnection;
+    protected static Connection jbdcConnection;
 
     public static Connection getConnect() {
         Connection con = null;
