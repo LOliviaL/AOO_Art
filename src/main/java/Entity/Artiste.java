@@ -5,16 +5,23 @@ public class Artiste {
     private static String name;
     private static String surname;
     private static String photo;
-    private static  Date dateNaiss;
-    private static  Date dateDeces;
+
+    private static String adresse;
+
+    private static String password;
+
+    private static Date dateNaiss;
+
 
     public String getName() {
+
         return this.name;
     }
     public void setName(String name) {
         this.name = name;
 
     }
+
     public String getSurname() {
 
         return this.surname;
@@ -32,22 +39,42 @@ public class Artiste {
         this.photo = photo;
 
     }
+
+    public  String getAdresse(){
+        return this.adresse;
+    }
+
+    public void setAdresse(String adresse){
+        this.adresse=adresse;
+    }
     public Date getDateNaiss() {
 
         return this.dateNaiss;
     }
+    public void setDateNaiss(Date dateNaiss) {
 
-    public Date getDateDeces() {
+       this.dateNaiss=dateNaiss;
 
-        return this.dateDeces;
     }
 
-    public Artiste(String name, String surname, String photo, Date dateNaiss) {
+
+    public String getPassword() {
+        return this.password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+
+    }
+
+    public Artiste(String name, String surname, String photo,Date dateNaiss, String password) {
         this.name = name;
         this.surname=surname;
         this.photo=photo;
         this.dateNaiss=dateNaiss;
+        this.password = password;
     }
+
+
 
 }
 

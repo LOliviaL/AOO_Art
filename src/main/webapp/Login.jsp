@@ -85,6 +85,17 @@
         .connex{
             color: white;
         }
+        .logo{
+            border-radius: 100%;
+            width: 90px;
+            height: 90px;
+        }
+        .entete{
+            color: black;
+            font-family: "Hoefler Text";
+            font-size: 30px;
+            padding-right: 10px;
+        }
     </style>
     <script>
 
@@ -121,19 +132,23 @@
 </head>
 
 <body>
+<div>
+    <a href="index.jsp"><img src="https://zupimages.net/up/23/11/7574.png" class="logo" align="left"> </a>
+    <p class="entete" align="right"><a href="index.jsp" class="entete">  Home <i class="fas fa-list-ul"></i> </a></p>
+</div>
 
-<form id="connexionForm" action="/loginservlet" method="post">
+<form id="connexionForm" action="login" method="post">
     <div class="login-box">
         <h1> Login </h1>
         <div class="txt-box">
             <i class="fas fa-user-tie"></i>
             <span id="vlogin"></span>
-            <input type="text" placeholder="Email" name="Email" id="login" autocomplete="off" required>
+            <input type="text" placeholder="Name" name="name" id="name" autocomplete="off" required>
         </div>
         <div class="txt-box">
             <i class="fas fa-key"></i>
             <span id="vpassword"></span>
-            <input type="password"  placeholder="Passeword" name="Motdepasse" id="password" autocomplete="off" required>
+            <input type="password"  placeholder="Passeword" name="passeword" id="password" autocomplete="off" required>
         </div>
         <table>
             <tr>
@@ -154,8 +169,8 @@
             </table>
         </div>
         <p align="center"> <a href="" class="connex">Mot de passe oublié ? </a></p>
-        <p align="center"><a href="${pageContext.request.contextPath}/inscripservlet" class="connex"> Vous n'avez pas de compte ? </a></p>
-        <p align="center"> <a href="${pageContext.request.contextPath}/inscripservlet" class="connex"> Inscrivez-vous </a> </p>
+        <p align="center"><a href="Inscription.jsp" class="connex"> Vous n'avez pas de compte ? </a></p>
+        <p align="center"> <a href="Inscription.jsp" class="connex"> Inscrivez-vous </a> </p>
 
     </div>
     <script src="https://kit.fontawesome.com/3ea0bb51d0.js"></script>

@@ -1,13 +1,17 @@
 package com.example.testb;
 
+import BDD.ArtisteBDD;
+import Entity.Artiste;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-@WebServlet(name = "loginservlet", value = "/loginservlet")
+@WebServlet(name = "login", urlPatterns = "/log")
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,7 +22,33 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        try {
+            findArtisteServlet(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+
+    private void findArtisteServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+
+        ArtisteBDD artisteBDD = new ArtisteBDD();
+        ArrayList<Artiste> listeArtiste = artisteBDD.listeAllArtistes();
+        for (Artiste artiste : listeArtiste){
+            if (artiste.getName()==name || artiste.getPassword()==password){
+                artisteBDD.findArtiste(artiste);
+                request.setAttribute("artist", artiste);
+            }
+            else {
+                System.out.println("Check your login or Password, Please!");
+            }
+        }
+        response.sendRedirect("Homepage.jsp");
+
+    }
+
+
 }

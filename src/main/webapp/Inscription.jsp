@@ -81,44 +81,52 @@
         .con{
             color: white;
         }
+        .logo{
+            border-radius: 100%;
+            width: 90px;
+            height: 90px;
+        }
+        .entete{
+            color: black;
+            font-family: "Hoefler Text";
+            font-size: 30px;
+            padding-right: 10px;
+        }
     </style>
 </head>
 <body>
-
-<form id="myForm" action="${pageContext.request.contextPath}/inscripservlet" method="post">
+<div>
+    <a href="index.jsp"><img src="https://zupimages.net/up/23/11/7574.png" class="logo" align="left"> </a>
+    <p class="entete" align="right"><a href="index.jsp" class="entete">  Home <i class="fas fa-list-ul"></i> </a></p>
+</div>
+<form id="myForm" action="ins" method="post">
     <div class="inscri">
         <h4> Inscrivez vous pour savoir plus d'information sur l'art Gallery </h4>
         <hr>
-        <i class="fas fa-mail-bulk"></i>
-        <label for="mail">E-mail : </label>
-        <div class="txt">
-            <span id="vmail"></span>
-            <input type="text"  placeholder="Adresse mail " name="email" id="mail">
-
-        </div>
         <i class="fas fa-user"></i>
-        <label for="lenom"> Nom  : </label>
+        <label for="name"> Nom  : </label>
         <div class="txt">
             <span id="vnom"></span>
-            <input type="text" placeholder="Nom" name="nom" id="lenom" autocomplete="off" required>
+            <input type="text" placeholder="Nom" name="name" id="name" autocomplete="off" required>
         </div>
         <i class="fas fa-user"></i>
-        <label for="leprénom"> Prénom : </label>
+        <label for="surname"> Prénom : </label>
         <div class="txt">
             <span id="vprénom"></span>
-            <input type="text"  placeholder="Prénom" name="prenom"id="leprénom" autocomplete="off" required>
+            <input type="text"  placeholder="Prénom" name="surname"id="surname" autocomplete="off" required>
         </div>
         <i class="fas fa-user"></i>
-        <label for="lenom"> Adresse  : </label>
+        <label for="dateNaiss"> Date de Naissance : </label>
         <div class="txt">
-            <span id="vadre"></span>
-            <input type="text" placeholder="Adresse" name="adresse" id="adresse" autocomplete="off" required>
+            <span id="ldatenaiss"></span>
+            <input type="date" id="dateNaiss" name="dateNaiss" value="2023-03-17" max="2023-03-17">
         </div>
+
         <i class="fas fa-unlock-alt"></i>
         <label for="password"> Mot de passe (Min 8 chiffres, ex: Aa1234567) : </label>
         <div class="txt">
             <span id="vpassword"></span>
-            <input type="password" placeholder="Mot de passe" name="MP" id="password" autocomplete="off" required>
+            <input type="password" placeholder="password" name="password" id="password" autocomplete="off" required>
         </div>
         <i class="fas fa-unlock-alt"></i>
         <label for="confpassword"> Confirmation de mot de passe : </label>
@@ -134,7 +142,7 @@
             et comment nous utilisons les cookies et autres technologies
             similaires en consultant notre Politique d’utilisation des cookies.</p>
         <hr>
-        <p align="center"> <a href="/loginservlet" class="con"> Vous avez un compte ? </a> <a href="Login.jsp" class="con"> Connectez-vous </a> </p>
+        <p align="center"> <a href=" " class="con"> Vous avez un compte ? </a> <a href="Login.jsp" class="con"> Connectez-vous </a> </p>
     </div>
 
 </form>
