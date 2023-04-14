@@ -1,4 +1,4 @@
-package BDD;
+package BDD.entityBDD;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class Bdd {
     public static Connection getConnect() {
         Connection con = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(jbdcURL, userName, userPassword);
             if (con != null) {
                 return con;

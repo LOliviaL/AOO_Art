@@ -61,7 +61,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>tousoeuvre</servlet-name>
-        <url-pattern>/toeuvre</url-pattern>
+        <url-pattern>/oeuvre</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
     <servlet-name>editpeinture</servlet-name>

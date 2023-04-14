@@ -2,6 +2,8 @@ package Entity;
 import java.util.Date;
 
 public class Artiste {
+
+    private static int Id;
     private static String name;
     private static String surname;
     private static String photo;
@@ -13,6 +15,9 @@ public class Artiste {
     private static Date dateNaiss;
 
 
+    public  int getId(){
+        return this.Id;
+    }
     public String getName() {
 
         return this.name;
@@ -66,7 +71,8 @@ public class Artiste {
 
     }
 
-    public Artiste(String name, String surname, String photo,Date dateNaiss, String password) {
+    public Artiste(int id, String name, String surname, String photo,Date dateNaiss, String password) {
+        this.Id = id;
         this.name = name;
         this.surname=surname;
         this.photo=photo;

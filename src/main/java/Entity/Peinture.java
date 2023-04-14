@@ -13,6 +13,7 @@ public class Peinture {
     private static String nameArtiste;
 
     public  int getId(){
+
         return this.Id;
     }
 
@@ -65,7 +66,8 @@ public class Peinture {
         this.nameArtiste=nameArtiste;
     }
 
-    public Peinture(String name, String photo, String description, float estimationPrice, Date dateCreation, String nameArtiste) {
+    public Peinture(int id,String name, String photo, String description, float estimationPrice, Date dateCreation, String nameArtiste) {
+        this.Id = id;
         this.name = name;
         this.photo=photo;
         this.description=description;

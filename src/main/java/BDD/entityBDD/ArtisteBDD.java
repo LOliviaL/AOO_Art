@@ -1,25 +1,22 @@
-package BDD;
+package BDD.entityBDD;
 
+import BDD.interfaces.ArtisteInterface;
 import Entity.Artiste;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ArtisteBDD extends Bdd{
+public class ArtisteBDD extends Bdd implements ArtisteInterface {
 
+    @Override
     public ArrayList<Artiste> listeAllArtistes () throws SQLException {
         jbdcConnection = getConnect();
         ArrayList<Artiste> artisteList = new ArrayList<>();
         Statement statement = jbdcConnection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from Artiste");
         while (resultSet.next()){
-            String name = resultSet.getString("name");
-            String surname = resultSet.getString("surname");
-            String photo = resultSet.getString("photo");
-            Date dateNaiss = resultSet.getDate("dateNaiss");
-            String password = resultSet.getString("password");
-            Artiste artiste = new Artiste(name, surname, photo, dateNaiss, password);
+            Artiste artiste = creatArtisteObject(resultSet);
             artisteList.add(artiste);
         }
         resultSet.close();
@@ -27,7 +24,7 @@ public class ArtisteBDD extends Bdd{
         deconnect();
         return artisteList;
     }
-
+    @Override
     public boolean insertArtiste(Artiste artiste) throws SQLException {
         jbdcConnection = getConnect();
         String insert = "INSERT INTO Artiste( name, surname, photo, dateNaiss, password) VALUES (?,?,?,?,?)";
@@ -44,6 +41,7 @@ public class ArtisteBDD extends Bdd{
         deconnect();
         return rowInsert;
     }
+    @Override
     public  boolean findArtiste(Artiste artiste) throws SQLException {
         jbdcConnection=getConnect();
         String select = "SELECT * FROM Artiste WHERE name=?";
@@ -55,5 +53,38 @@ public class ArtisteBDD extends Bdd{
         deconnect();
         return rowInsert;
 
+    }
+    @Override
+    public Artiste getArtisteById(int id) {
+
+        Artiste artiste=null;
+
+        String select="SELECT * FROM Artiste WHERE name=?";
+        try{
+            jbdcConnection=getConnect();
+            PreparedStatement st = jbdcConnection.prepareStatement(select);
+            st.setInt(1, id);
+            ResultSet resultSet=st.executeQuery();
+            while(resultSet.next()){
+                artiste=creatArtisteObject(resultSet);
+            }
+            deconnect();
+        }catch (Exception ignored){
+
+        }
+        return artiste;
+    }
+
+    @Override
+    public Artiste creatArtisteObject(ResultSet resultSet) throws SQLException {
+
+        int id=resultSet.getInt("Id");
+        String name = resultSet.getString("name");
+        String surname = resultSet.getString("surname");
+        String photo = resultSet.getString("photo");
+        Date dateNaiss = resultSet.getDate("dateNaiss");
+        String password = resultSet.getString("password");
+
+        return new Artiste(id, name, surname, photo, dateNaiss, password);
     }
 }

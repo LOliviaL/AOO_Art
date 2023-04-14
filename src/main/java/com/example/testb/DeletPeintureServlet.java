@@ -1,6 +1,6 @@
 package com.example.testb;
 
-import BDD.PeintureBDD;
+import BDD.entityBDD.PeintureBDD;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

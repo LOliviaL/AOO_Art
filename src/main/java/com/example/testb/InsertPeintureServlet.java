@@ -1,6 +1,6 @@
 package com.example.testb;
 
-import BDD.PeintureBDD;
+import BDD.entityBDD.PeintureBDD;
 import Entity.Peinture;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -10,8 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
-
-import static java.lang.System.out;
 
 @WebServlet(name = "insepeinture", urlPatterns = "/ipein")
 public class InsertPeintureServlet extends HttpServlet {

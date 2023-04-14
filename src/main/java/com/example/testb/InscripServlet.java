@@ -1,13 +1,12 @@
 package com.example.testb;
 
-import BDD.ArtisteBDD;
+import BDD.entityBDD.ArtisteBDD;
 import Entity.Artiste;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 @WebServlet(name = "inscription", urlPatterns = "/ins")

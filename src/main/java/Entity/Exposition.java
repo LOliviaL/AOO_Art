@@ -1,54 +1,90 @@
 package Entity;
-import java.util.Date;
 
-public class Exposition {
-    private static String name;
-    private static int nbrVisiteurMax;
-    private static String lieu;
-    private static  Date dateDeb;
-    private static  Date dateFin;
+import BDD.interfaces.ExpositionInterface;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Exposition implements ExpositionInterface {
+    private String location;
+    private String name;
+    private LocalDate debDate;
+    private LocalDate finDate;
+    private int maxPlace;
+    private List<Peinture> oeuvres;
+
+    public Exposition(String name, LocalDate debDate, LocalDate finDate, int maxPlace, String location) {
+        this.name = name;
+        this.debDate = debDate;
+        this.finDate = finDate;
+        this.location = location;
+        this.maxPlace = maxPlace;
+        this.oeuvres = new ArrayList<>();
+        /*  this.spaces = new ArrayList<>(); */
+    }
+
+    @Override
     public String getName() {
-        return this.name;
+        return name;
     }
-    public void setName(String name) {
-        this.name = name;
-
+    @Override
+    public LocalDate getdebDate() {
+        return debDate;
     }
-    public String getLieu() {
-        return this.lieu;
+    @Override
+    public LocalDate getfinDate() {
+        return finDate;
     }
-    public void setLieu(String lieu) {
-        this.lieu = lieu;
-
+    @Override
+    public int getmaxPlace() {
+        return maxPlace;
     }
-    public int getNbrVisiteurMax() {
-        return this.nbrVisiteurMax;
+    @Override
+    public List<Peinture> getOeuvres() {
+        return oeuvres;
     }
-    public void setNbrVisiteurMax(int nbrVisiteurMax) {
-        this.nbrVisiteurMax = nbrVisiteurMax;
-
+    @Override
+    public void addOeuvre(Peinture oeuvre) {
+        oeuvres.add(oeuvre);
     }
-    public Date getDateDeb() {
-        return this.dateDeb;
-    }
-    public void setDateDeb(Date dateDeb) {
-        this.dateDeb = dateDeb;
-
-    }
-    public Date getDateFin() {
-        return this.dateFin;
-    }
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-
+    @Override
+    public void removeOeuvre(Peinture oeuvre) {
+        oeuvres.remove(oeuvre);
     }
 
-    public Exposition(String name, String lieu, int nbrVisiteurMax, Date dateDeb, Date dateFin) {
-        this.name = name;
-        this.lieu=lieu;
-        this.nbrVisiteurMax=nbrVisiteurMax;
-        this.dateDeb=dateDeb;
-        this.dateFin=dateFin;
+    @Override
+    public boolean isOpen() {
+
+        LocalDate currentDate= LocalDate.now();
+        return currentDate.isEqual(debDate) || currentDate.isEqual(finDate) || (currentDate.isAfter(debDate) && currentDate.isBefore(finDate));
     }
+
+    /*
+    public List<ISpace> getSpaces() {
+        return spaces;
+    }
+
+    public void addSpace(ISpace space) {
+        spaces.add(space);
+    }
+
+    public void removeSpace(ISpace space) {
+        spaces.remove(space);
+    }
+*/
+        /*
+        LocalDate currentDate= LocalDate.now();
+        return (currentDate >= debDate) && (currentDate <= finDate);
+        */
+
+    /*  @Override
+    public List<Peinture> getOeuvresBySpace(ISpace space) {
+        List<Peinture> oeuvresBySpace = new ArrayList<>();
+        for (Peinture oeuvre : oeuvres) {
+            if (oeuvre.getSpaces().contains(space)) {
+                oeuvresBySpace.add(oeuvre);
+            }
+        }
+        return oeuvresBySpace;
+     */
 }
