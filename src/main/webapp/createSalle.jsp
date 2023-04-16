@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Create Exposition</title>
+  <title>Create Salle</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width-device-width, intiale-scale=1.0">
   <meta charset="utf-8"/>
