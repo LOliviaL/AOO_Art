@@ -14,8 +14,6 @@ public interface ExpositionInterface {
     void addSalle(SalleInterface Salle);
     void removeSalle(SalleInterface Salle);
     List<OeuvreInterface> getOeuvres();
-    void addOeuvre(Oeuvre oeuvre);
-    void removeOeuvre(Oeuvre oeuvre);
     boolean isOpen();
     List<OeuvreInterface>getOeuvresBySalle(SalleInterface Salle);
 }
