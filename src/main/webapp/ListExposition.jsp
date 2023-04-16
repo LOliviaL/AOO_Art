@@ -24,30 +24,28 @@
     <thead>
     <tr>
       <th scope="col">Titre</th>
-      <th scope="col">Desciption</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Prix reduit</th>
+      <th scope="col">date debut</th>
+      <th scope="col">date fin</th>
+      <th scope="col">nbrPlace</th>
+      <th scope="col">list salle</th>
       <th scope="col">edit</th>
       <th scope="col">delete</th>
-      <th scope="col" colspan="2"><a href="{{path('app_programManagement_create')}}"><button type="button"  class="btn btn-success">Nouveau</button></a></th>
+      <th scope="col" colspan="2"><button type="button"  class="btn btn-success">Nouveau</button></a></th>
     </tr>
     </thead>
     <tbody>
-    {% for programme in programmes %}
     <tr>
-      <th scope="row">{{ programme.getTitle() }}</th>
-      <td>{{ programme.getDescriptionProgram() }}</td>
-      <td>prix</td>
-      <td>prix reduit</td>
-      <td><a href="{{path('app_programManagement_edit',{ id : programme.id})}}"><button type="button" class="btn btn-outline-warning">edit</button></a></td>
-      <td><a href="{{path('app_programManagement_delete', {id : programme.id})}}"><button type="button" class="btn btn-outline-danger">delete</button></a></td>
+      <th scope="row">Exposition 1</th>
+      <td>12-08-2022</td>
+      <td>12-08-2025</td>
+      <td>700</td>
+			<td>[Salle 1], [Salle 2], [Salle 3]</td>
+      <td><button type="button" class="btn btn-outline-warning">edit</button></a></td>
+      <td><button type="button" class="btn btn-outline-danger">delete</button></a></td>
     </tr>
     {% endfor %}
     </tbody>
   </table>
-</div>
-<div class="navigation">
-  {{ knp_pagination_render(programmes) }}
 </div>
 </body>
 </html>
