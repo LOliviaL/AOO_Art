@@ -223,35 +223,14 @@
           </div>
           <div class="form-row">
             <div class="form-holder">
-              <input type="text" placeholder="Prix *" class="form-control">
-            </div>
-            <div class="form-holder">
-              <input type="text" placeholder="Prix reduit *" class="form-control">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-holder">
-              <input type="text" placeholder="Age minimal" class="form-control">
-            </div>
-            <div class="form-holder">
-              <input type="text" placeholder="Durée du Programme" class="form-control">
+              <input type="text" placeholder="nbr de place*" class="form-control">
             </div>
           </div>
 
-          <div class="form-holder w-100">
-            <input type="text" placeholder="URL Photo présentation" class="form-control">
-          </div>
-          <br>
-          <p>Descrption</p>
-          <div class="form-row">
-            <div class="form-holder w-100">
-              <textarea name="" id="" placeholder="Your messagere here!" class="form-control" style="height: 99px;"></textarea>
-            </div>
-          </div>
         </div>
       </div>
     </section>
-    {{ form_end(form) }}
+
   </form>
 </div>
 
