@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Panier {
 
-    private List<Peinture> oeuvres;
+    private List<Oeuvre> oeuvres;
     private double montantTotal;
 
     public Panier() {
@@ -13,17 +13,17 @@ public class Panier {
         montantTotal = 0;
     }
 
-    public void ajouterOeuvre(Peinture oeuvre) {
+    public void ajouterOeuvre(Oeuvre oeuvre) {
         oeuvres.add(oeuvre);
         montantTotal += oeuvre.getEstimationPrice();
     }
 
-    public void supprimerOeuvre(Peinture oeuvre) {
+    public void supprimerOeuvre(Oeuvre oeuvre) {
         oeuvres.remove(oeuvre);
         montantTotal -= oeuvre.getEstimationPrice();
     }
 
-    public List<Peinture> getOeuvres() {
+    public List<Oeuvre> getOeuvres() {
         return oeuvres;
     }
 

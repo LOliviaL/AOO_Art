@@ -46,4 +46,14 @@ public class ArtisteObjet implements ArtisteInterface {
         return null;
     }
 
+    @Override
+    public Artiste getArtisteByPseudo(String pseudo) {
+        for (Artiste artistefind : artisteList){
+            if (artistefind.getPseudo() == pseudo){
+                return artistefind;
+            }
+        }
+        return null;
+    }
+
 }

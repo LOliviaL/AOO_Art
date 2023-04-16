@@ -1,6 +1,6 @@
 package com.example.testb;
 
-import BDD.entityBDD.PeintureBDD;
+import BDD.entityBDD.OeuvreBDD;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet(name = "deletpeinture", value = "/deleto")
-public class DeletPeintureServlet extends HttpServlet {
+public class DeleteOeuvreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             String nom = request.getParameter("name");
-            PeintureBDD peintureBDD =new PeintureBDD();
-            peintureBDD.deletePeinture(nom);
+            OeuvreBDD oeuvreBDD =new OeuvreBDD();
+            oeuvreBDD.deleteOeuvre(nom);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

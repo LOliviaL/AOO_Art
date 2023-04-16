@@ -1,7 +1,7 @@
 package Entity;
 import java.util.Date;
 
-public class Peinture {
+public class Oeuvre {
 
     private static int Id;
     private static String name;
@@ -66,8 +66,7 @@ public class Peinture {
         this.nameArtiste=nameArtiste;
     }
 
-    public Peinture(int id,String name, String photo, String description, float estimationPrice, Date dateCreation, String nameArtiste) {
-        this.Id = id;
+    public Oeuvre(String name, String photo, String description, float estimationPrice, Date dateCreation, String nameArtiste) {
         this.name = name;
         this.photo=photo;
         this.description=description;

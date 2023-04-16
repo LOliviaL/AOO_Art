@@ -97,7 +97,7 @@
             </tbody>
 
         </table>
-        <a class="btn btn-outline-success"  href="InsertPeinture.jsp">Ajouter un Oeuvre</a>
+        <a class="btn btn-outline-success"  href="InsertOeuvre.jsp">Ajouter un Oeuvre</a>
     </div>
 </form>
 </body>

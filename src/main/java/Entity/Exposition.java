@@ -1,90 +1,125 @@
 package Entity;
 
 import BDD.interfaces.ExpositionInterface;
+import BDD.interfaces.OeuvreInterface;
+import BDD.interfaces.SalleInterface;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Exposition implements ExpositionInterface {
-    private String location;
     private String name;
     private LocalDate debDate;
     private LocalDate finDate;
-    private int maxPlace;
-    private List<Peinture> oeuvres;
+    private ArrayList<Exposition> expositionsListe = new ArrayList<>();
+    private int nbPlace;
+    private List<SalleInterface> Salles;
+    private List<OeuvreInterface> oeuvres;
 
-    public Exposition(String name, LocalDate debDate, LocalDate finDate, int maxPlace, String location) {
+    public Exposition(String name, LocalDate debDate, LocalDate finDate, int nbPlace) {
         this.name = name;
         this.debDate = debDate;
         this.finDate = finDate;
-        this.location = location;
-        this.maxPlace = maxPlace;
+        this.nbPlace = nbPlace;
+        this.Salles = new ArrayList<>();
         this.oeuvres = new ArrayList<>();
-        /*  this.spaces = new ArrayList<>(); */
     }
 
-    @Override
     public String getName() {
         return name;
     }
-    @Override
+
     public LocalDate getdebDate() {
         return debDate;
     }
-    @Override
+
     public LocalDate getfinDate() {
         return finDate;
     }
+
     @Override
     public int getmaxPlace() {
-        return maxPlace;
+        return nbPlace;
     }
-    @Override
-    public List<Peinture> getOeuvres() {
+
+    public List<SalleInterface> getSalles() {
+        return Salles;
+    }
+
+    public void addSalle(SalleInterface Salle) {
+        Salles.add(Salle);
+    }
+
+    public void removeSalle(SalleInterface Salle) {
+        Salles.remove(Salle);
+    }
+
+    public List<OeuvreInterface> getOeuvres() {
         return oeuvres;
     }
+
     @Override
-    public void addOeuvre(Peinture oeuvre) {
+    public void addOeuvre(Oeuvre oeuvre) {
+
+    }
+
+    @Override
+    public void removeOeuvre(Oeuvre oeuvre) {
+
+    }
+
+    public void addOeuvre(OeuvreInterface oeuvre) {
         oeuvres.add(oeuvre);
     }
-    @Override
-    public void removeOeuvre(Peinture oeuvre) {
+
+    public void removeOeuvre(OeuvreInterface oeuvre) {
         oeuvres.remove(oeuvre);
     }
 
     @Override
     public boolean isOpen() {
-
-        LocalDate currentDate= LocalDate.now();
+        LocalDate currentDate = LocalDate.now();
         return currentDate.isEqual(debDate) || currentDate.isEqual(finDate) || (currentDate.isAfter(debDate) && currentDate.isBefore(finDate));
     }
 
-    /*
-    public List<ISpace> getSpaces() {
-        return spaces;
-    }
-
-    public void addSpace(ISpace space) {
-        spaces.add(space);
-    }
-
-    public void removeSpace(ISpace space) {
-        spaces.remove(space);
-    }
-*/
+    @Override
+    public List<OeuvreInterface> getOeuvresBySalle(SalleInterface Salle) {
+        List<OeuvreInterface> oeuvresBySalle = new ArrayList<>();
         /*
-        LocalDate currentDate= LocalDate.now();
-        return (currentDate >= debDate) && (currentDate <= finDate);
-        */
-
-    /*  @Override
-    public List<Peinture> getOeuvresBySpace(ISpace space) {
-        List<Peinture> oeuvresBySpace = new ArrayList<>();
-        for (Peinture oeuvre : oeuvres) {
-            if (oeuvre.getSpaces().contains(space)) {
-                oeuvresBySpace.add(oeuvre);
+        for (OeuvreInterface oeuvre : oeuvres) {
+            if (oeuvre.getSalles().contains(Salle)) {
+                oeuvresBySalle.add(oeuvre);
             }
         }
-        return oeuvresBySpace;
-     */
+        */
+        return oeuvresBySalle;
+    }
+
+    public void planifierExposition(String name, LocalDate debDate, LocalDate finDate, int maxPlace) {
+        Exposition newExposition = new Exposition(name, debDate, finDate, maxPlace);
+        expositionsListe.add(newExposition);
+    }
+
+    public void afficherInfosExposition(Exposition exposition) {
+        System.out.println("Nom: " + exposition.getName());
+        System.out.println("Date de début: " + exposition.getdebDate());
+        System.out.println("Date de fin: " + exposition.getfinDate());
+        System.out.println("Nombre maximum de places: " + exposition.getmaxPlace());
+    }
+
+
+    public List<Exposition> getExpositionsEnCoursOuAVenir() {
+        List<Exposition> expositionsEnCoursOuAVenir = new ArrayList<>();
+        LocalDate currentDate = LocalDate.now();
+        for (Exposition exposition : expositionsListe) {
+            if (exposition.getdebDate().isAfter(currentDate)) {
+                expositionsEnCoursOuAVenir.add(exposition);
+            }
+        }
+        return expositionsEnCoursOuAVenir;
+    }
+
+
+
 }

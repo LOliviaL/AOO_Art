@@ -1,20 +1,16 @@
-
-<%@ page import="Entity.Oeuvre" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="BDD.entityBDD.OeuvreBDD" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: olivialiu
-  Date: 18/3/2023
-  Time: 16:53
+  Date: 16/4/2023
+  Time: 09:39
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Tous Oeuvres</title>
+  <title>Confirmation d'achat</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width-device-width, intiale-scale=1.0">
   <meta charset="utf-8"/>
@@ -73,57 +69,29 @@
   </div>
 </nav>
 
-  <a href="/oeuvre" ><button class="btn btn-primary btn-sm">Actualiser Page</button></a>
-
-  <div class="container mb-3">
-
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Photo</th>
-        <th scope="col">Prix d'estimation</th>
-        <th scope="col">Description</th>
-        <th scope="col">Date de Creation</th>
-        <th scope="col">Nom d'Artiste</th>
-      </tr>
-      </thead>
-      <form action="oeuvre" method="get">
-      <tbody>
-      <c:forEach var="item" items="${listoeuvre}">
-      <tr>
-          <th scope="row">
-            <c:out value="${item.id}" />
-          </th>
-          <th scope="row">
-            <c:out value="${item.name}" />
-          </th>
-          <th>
-              <c:out value="${item.photo}" />
-          </th>
-          <th>
-              <c:out value="${item.estimationPrice}" />
-          </th>
-            <th>
-            <c:out value="${item.dateCreation}" />
-            </th>
-            <th>
-            <c:out value="${item.description}" />
-            </th>
-            <th>
-            <c:out value="${item.nameArtiste}" />
-            </th>
-        <td>
-          <a href="Panier.jsp">
-            <button class="btn btn-primary btn-sm">Acheter</button>
-          </a>
-        </td>
-      </tr>
+        <h1>Confirmation de paiement</h1>
+        <p>Votre paiement a été accepté.</p>
+        <p>Voici les détails de votre commande :</p>
+        <table>
+          <tr>
+            <th>Nom de l'article</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix total</th>
+          </tr>
+          <c:forEach items="${sessionScope.panier.articles}" var="article">
+            <tr>
+              <td>${article.nom}</td>
+              <td>${article.prix} €</td>
+              <td>${article.quantite}</td>
+              <td>${article.prixTotal} €</td>
+            </tr>
           </c:forEach>
-      </tbody>
-      </form>
-    </table>
-  </div>
-</body>
-</html>
+          <tr>
+            <th colspan="3">Total</th>
+            <th>${sessionScope.panier.prixTotal} €</th>
+          </tr>
+        </table>
+        <p>Merci pour votre achat !</p>
+        </body>
+        </html>

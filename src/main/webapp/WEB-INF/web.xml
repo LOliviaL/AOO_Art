@@ -6,7 +6,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>newServlet</servlet-name>
-        <servlet-class>com.example.testb.InsertPeintureServlet</servlet-class>
+        <servlet-class>com.example.testb.InsertOeuvreServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>inscription</servlet-name>
@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>insepeinture</servlet-name>
-        <servlet-class>com.example.testb.InsertPeintureServlet</servlet-class>
+        <servlet-class>com.example.testb.InsertOeuvreServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>mesoeuvre</servlet-name>
@@ -30,11 +30,11 @@
     </servlet>
     <servlet>
         <servlet-name>editpeinture</servlet-name>
-        <servlet-class>com.example.testb.EditPeintureServlet</servlet-class>
+        <servlet-class>com.example.testb.EditOeuvreServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deletpeinture</servlet-name>
-        <servlet-class>com.example.testb.DeletPeintureServlet</servlet-class>
+        <servlet-class>com.example.testb.DeleteOeuvreServlet</servlet-class>
     </servlet>
 
 

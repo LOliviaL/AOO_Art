@@ -1,7 +1,7 @@
 package com.example.testb;
 
-import BDD.entityBDD.PeintureBDD;
-import Entity.Peinture;
+import BDD.entityBDD.OeuvreBDD;
+import Entity.Oeuvre;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -13,10 +13,10 @@ import java.util.ArrayList;
 @WebServlet(name = "tousoeuvre", value = "/oeuvre")
 public class TousOeuvreServlet extends HttpServlet {
 
-    private PeintureBDD peintureBDD;
+    private OeuvreBDD oeuvreBDD;
 
     public void init() {
-        peintureBDD = new PeintureBDD();
+        oeuvreBDD = new OeuvreBDD();
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,8 +39,8 @@ public class TousOeuvreServlet extends HttpServlet {
 
     private void listAllPeintureServlet(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        ArrayList<Peinture> listePeinture = peintureBDD.listeAllPeinture();
-        request.setAttribute("listoeuvre", listePeinture);
+        ArrayList<Oeuvre> listeOeuvre = oeuvreBDD.listeAllOeuvre();
+        request.setAttribute("listoeuvre", listeOeuvre);
         RequestDispatcher dispatcher = request.getRequestDispatcher("AllOeuvres.jsp");
         dispatcher.forward(request, response);
     }

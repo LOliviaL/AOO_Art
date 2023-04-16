@@ -143,7 +143,7 @@
         <div class="txt-box">
             <i class="fas fa-user-tie"></i>
             <span id="vlogin"></span>
-            <input type="text" placeholder="Name" name="name" id="name" autocomplete="off" required>
+            <input type="text" placeholder="Pseudo" name="pseudo" id="pseudo" autocomplete="off" required>
         </div>
         <div class="txt-box">
             <i class="fas fa-key"></i>

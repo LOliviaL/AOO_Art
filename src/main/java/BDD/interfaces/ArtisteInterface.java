@@ -13,4 +13,5 @@ public interface ArtisteInterface {
    boolean findArtiste(Artiste artiste) throws SQLException;
    Artiste getArtisteById(int id);
    Artiste creatArtisteObject(ResultSet resultSet) throws SQLException;
+   Artiste getArtisteByPseudo(String pseudo);
 }

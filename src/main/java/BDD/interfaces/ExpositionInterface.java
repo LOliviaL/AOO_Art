@@ -1,6 +1,6 @@
 package BDD.interfaces;
 
-import Entity.Peinture;
+import Entity.Oeuvre;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,16 +10,12 @@ public interface ExpositionInterface {
     LocalDate getdebDate();
     LocalDate getfinDate();
     int getmaxPlace();
-    List<Peinture> getOeuvres();
-    void addOeuvre(Peinture oeuvre);
-    void removeOeuvre(Peinture oeuvre);
+    List<SalleInterface> getSalles();
+    void addSalle(SalleInterface Salle);
+    void removeSalle(SalleInterface Salle);
+    List<OeuvreInterface> getOeuvres();
+    void addOeuvre(Oeuvre oeuvre);
+    void removeOeuvre(Oeuvre oeuvre);
     boolean isOpen();
-
-    /* List<ISpace> getSpaces(); */
-    /*  List<Peinture> getOeuvresBySpace(ISpace space); */
-    /*
-    void addSpace(ISpace space);
-    void removeSpace(ISpace space);
-    */
-
+    List<OeuvreInterface>getOeuvresBySalle(SalleInterface Salle);
 }

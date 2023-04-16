@@ -4,6 +4,7 @@ import java.util.Date;
 public class Artiste {
 
     private static int Id;
+    private static String pseudo;
     private static String name;
     private static String surname;
     private static String photo;
@@ -24,6 +25,14 @@ public class Artiste {
     }
     public void setName(String name) {
         this.name = name;
+
+    }
+    public String getPseudo() {
+
+        return this.pseudo;
+    }
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
 
     }
 
@@ -71,8 +80,8 @@ public class Artiste {
 
     }
 
-    public Artiste(int id, String name, String surname, String photo,Date dateNaiss, String password) {
-        this.Id = id;
+    public Artiste(String pseudo, String name, String surname, String photo,Date dateNaiss, String password) {
+        this.pseudo=pseudo;
         this.name = name;
         this.surname=surname;
         this.photo=photo;

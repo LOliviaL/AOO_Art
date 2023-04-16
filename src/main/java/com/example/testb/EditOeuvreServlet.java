@@ -1,7 +1,7 @@
 package com.example.testb;
 
-import BDD.entityBDD.PeintureBDD;
-import Entity.Peinture;
+import BDD.entityBDD.OeuvreBDD;
+import Entity.Oeuvre;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -11,25 +11,23 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 
-@WebServlet(name = "insepeinture", urlPatterns = "/ipein")
-public class InsertPeintureServlet extends HttpServlet {
+@WebServlet(name = "editpeinture", value = "/edito")
+public class EditOeuvreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("MesOeuvre.jsp");
-        dispatcher.forward(request,response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         try {
-            insertPeintureServlet(request, response);
+            updateOeuvreServlet(request, response);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
-    private void insertPeintureServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+    private void updateOeuvreServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         PrintWriter out=response.getWriter();
         String name = request.getParameter("name");
         String photo = request.getParameter("photo");
@@ -38,13 +36,14 @@ public class InsertPeintureServlet extends HttpServlet {
         String dateCreation = request.getParameter("dateCreation");
         String nameArtiste = null;
 
-        Peinture newpeintur= new Peinture(name, photo,description, Float.parseFloat(estimationPrice), Date.valueOf(dateCreation), nameArtiste);
-        PeintureBDD peintureBDD =new PeintureBDD();
-        boolean status = peintureBDD.insertPeinture(newpeintur);
+        Oeuvre newpeintur= new Oeuvre(name, photo,description, Float.parseFloat(estimationPrice), Date.valueOf(dateCreation), nameArtiste);
+        OeuvreBDD oeuvreBDD =new OeuvreBDD();
+        boolean status = oeuvreBDD.updateOeuvre(newpeintur);
 
         if(status){
             out.print("<p>Record saved successfully!</p>");
-            request.getRequestDispatcher("MesOeuvre.jsp").include(request, response);
+            response.sendRedirect("MesOeuvre.jsp");
+
         }else{
             out.println("Sorry! unable to save record");
         }

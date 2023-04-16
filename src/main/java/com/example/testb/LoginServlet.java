@@ -31,13 +31,13 @@ public class LoginServlet extends HttpServlet {
 
     private void findArtisteServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
 
-        String name = request.getParameter("name");
+        String pseudo = request.getParameter("pseudo");
         String password = request.getParameter("password");
 
         ArtisteBDD artisteBDD = new ArtisteBDD();
         ArrayList<Artiste> listeArtiste = artisteBDD.listeAllArtistes();
         for (Artiste artiste : listeArtiste){
-            if (artiste.getName()==name || artiste.getPassword()==password){
+            if (artiste.getPseudo()==pseudo || artiste.getPassword()==password){
                 artisteBDD.findArtiste(artiste);
                 request.setAttribute("artist", artiste);
             }

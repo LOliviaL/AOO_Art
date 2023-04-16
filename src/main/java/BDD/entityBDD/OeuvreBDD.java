@@ -1,8 +1,7 @@
 package BDD.entityBDD;
 
-import BDD.interfaces.PeintureInterface;
-import Entity.Artiste;
-import Entity.Peinture;
+import BDD.interfaces.OeuvreInterface;
+import Entity.Oeuvre;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,35 +9,35 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PeintureBDD extends Bdd implements PeintureInterface {
+public class OeuvreBDD extends Bdd implements OeuvreInterface {
 
     @Override
-    public ArrayList<Peinture> listeAllPeinture () throws SQLException {
+    public ArrayList<Oeuvre> listeAllOeuvre() throws SQLException {
         jbdcConnection = getConnect();
-        ArrayList<Peinture> peintureList = new ArrayList<>();
+        ArrayList<Oeuvre> oeuvreList = new ArrayList<>();
         Statement statement = jbdcConnection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from Peinture");
         while (resultSet.next()){
-            Peinture peinture = creatPeintureObject(resultSet);
-            peintureList.add(peinture);
+            Oeuvre oeuvre = creatOeuvreObject(resultSet);
+            oeuvreList.add(oeuvre);
         }
         resultSet.close();
         statement.close();
         deconnect();
-        return peintureList;
+        return oeuvreList;
     }
     @Override
-    public boolean insertPeinture( Peinture peinture) throws SQLException {
+    public boolean insertOeuvre(Oeuvre oeuvre) throws SQLException {
         jbdcConnection= getConnect();
         String insert = "INSERT INTO peinture( name, photo, estimationPrice, description, dateCreation, nameArtiste) " +
                 "VALUES (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = jbdcConnection.prepareStatement(insert);
-        preparedStatement.setString(1, peinture.getName());
-        preparedStatement.setString(2, peinture.getPhoto());
-        preparedStatement.setFloat(3,peinture.getEstimationPrice());
-        preparedStatement.setString(4,peinture.getDescription());
-        preparedStatement.setDate(5, (java.sql.Date) peinture.getDateCreation());
-        preparedStatement.setString(6, peinture.getNameArtiste());
+        preparedStatement.setString(1, oeuvre.getName());
+        preparedStatement.setString(2, oeuvre.getPhoto());
+        preparedStatement.setFloat(3, oeuvre.getEstimationPrice());
+        preparedStatement.setString(4, oeuvre.getDescription());
+        preparedStatement.setDate(5, (java.sql.Date) oeuvre.getDateCreation());
+        preparedStatement.setString(6, oeuvre.getNameArtiste());
 
         boolean rowInsert = preparedStatement.executeUpdate()>0;
         preparedStatement.close();
@@ -46,11 +45,11 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
         return rowInsert;
     }
     @Override
-    public  boolean findPeinture(Peinture peinture) throws SQLException {
+    public  boolean findoeuvre(Oeuvre oeuvre) throws SQLException {
         jbdcConnection=getConnect();
         String select = "SELECT * FROM Peinture WHERE name=?";
         PreparedStatement preparedStatement =jbdcConnection.prepareStatement(select);
-        preparedStatement.setString(1, peinture.getName());
+        preparedStatement.setString(1, oeuvre.getName());
 
         boolean rowInsert = preparedStatement.executeUpdate()>0;
         preparedStatement.close();
@@ -58,18 +57,17 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
         return rowInsert;
     }
     @Override
-    public boolean updatePeinture (Peinture peinture) throws SQLException {
+    public boolean updateOeuvre(Oeuvre oeuvre) throws SQLException {
         jbdcConnection=getConnect();
-        String update = "UPDATE peinture SET name=?,photo=?,estimationPrice=?,description=?,dateCreation=?,nameArtiste=? WHERE Id=?";
+        String update = "UPDATE peinture SET name=?,photo=?,estimationPrice=?,description=?,dateCreation=?,nameArtiste=? WHERE name=?";
         PreparedStatement preparedStatement = jbdcConnection.prepareStatement(update);
-        preparedStatement.setString(1, peinture.getName());
-        preparedStatement.setString(2, peinture.getPhoto());
-        preparedStatement.setFloat(3, peinture.getEstimationPrice());
-        preparedStatement.setString(4, peinture.getDescription());
-        preparedStatement.setDate(5, (java.sql.Date) peinture.getDateCreation());
-        preparedStatement.setString(6, peinture.getNameArtiste());
-        preparedStatement.setString(7, peinture.getName());
-        preparedStatement.setInt(7, peinture.getId());
+        preparedStatement.setString(1, oeuvre.getName());
+        preparedStatement.setString(2, oeuvre.getPhoto());
+        preparedStatement.setFloat(3, oeuvre.getEstimationPrice());
+        preparedStatement.setString(4, oeuvre.getDescription());
+        preparedStatement.setDate(5, (java.sql.Date) oeuvre.getDateCreation());
+        preparedStatement.setString(6, oeuvre.getNameArtiste());
+        preparedStatement.setString(7, oeuvre.getName());
 
         boolean rowInsert = preparedStatement.executeUpdate()>0;
         preparedStatement.close();
@@ -78,7 +76,7 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
 
     }
     @Override
-    public  boolean deletePeinture (String name) throws SQLException {
+    public  boolean deleteOeuvre(String name) throws SQLException {
         jbdcConnection= getConnect();
         String delet = "DELETE FROM peinture WHERE name = ?";
         PreparedStatement preparedStatement = jbdcConnection.prepareStatement(delet);
@@ -91,9 +89,9 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
 
     }
     @Override
-    public Peinture getPeintureById(int id) {
+    public Oeuvre getOeuvreById(int id) {
 
-        Peinture peinture=null;
+        Oeuvre oeuvre =null;
         String select="SELECT * FROM Peinture WHERE Id=?";
 
         try{
@@ -102,18 +100,18 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
             st.setInt(1, id);
             ResultSet resultSet=st.executeQuery();
             while(resultSet.next()){
-                peinture=creatPeintureObject(resultSet);
+                oeuvre = creatOeuvreObject(resultSet);
             }
             deconnect();
         }catch (Exception ignored){
 
         }
-        return peinture;
+        return oeuvre;
     }
     @Override
-    public Peinture getPeintureByName(String name) {
+    public Oeuvre getOeuvreByName(String name) {
 
-        Peinture peinture=null;
+        Oeuvre oeuvre =null;
         String select="SELECT * FROM Peinture WHERE name=?";
 
         try{
@@ -122,20 +120,18 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
             st.setString(1, name);
             ResultSet resultSet=st.executeQuery();
             while(resultSet.next()){
-                peinture=creatPeintureObject(resultSet);
+                oeuvre = creatOeuvreObject(resultSet);
             }
             deconnect();
         }catch (Exception ignored){
 
         }
-        return peinture;
+        return oeuvre;
     }
 
 
     @Override
-    public Peinture creatPeintureObject(ResultSet resultSet) throws SQLException {
-
-        int id=resultSet.getInt("Id");
+    public Oeuvre creatOeuvreObject(ResultSet resultSet) throws SQLException {
 
         String name = resultSet.getString("name");
         String photo = resultSet.getString("photo");
@@ -144,7 +140,7 @@ public class PeintureBDD extends Bdd implements PeintureInterface {
         Date dateCreation = resultSet.getDate("dateCreation");
         String nameArtiste = resultSet.getString("nameArtiste");
 
-        return new Peinture(id,name, photo,description, Float.parseFloat(estimationPrice), dateCreation, nameArtiste);
+        return new Oeuvre(name, photo,description, Float.parseFloat(estimationPrice), dateCreation, nameArtiste);
     }
 
 

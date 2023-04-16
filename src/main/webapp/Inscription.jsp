@@ -104,6 +104,12 @@
         <h4> Inscrivez vous pour savoir plus d'information sur l'art Gallery </h4>
         <hr>
         <i class="fas fa-user"></i>
+        <label for="name"> Pseudo  : </label>
+        <div class="txt">
+            <span id="vpseudo"></span>
+            <input type="text" placeholder="Pseudo" name="pseudo" id="pseudo" autocomplete="off" required>
+        </div>
+        <i class="fas fa-user"></i>
         <label for="name"> Nom  : </label>
         <div class="txt">
             <span id="vnom"></span>

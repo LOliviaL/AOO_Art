@@ -1,21 +1,21 @@
-import BDD.entityBDD.PeintureBDD;
-import Entity.Peinture;
+import BDD.entityBDD.OeuvreBDD;
+import Entity.Oeuvre;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class main {
 
-    public static ArrayList<Peinture> test () throws SQLException {
-        ArrayList<Peinture> peintureList = new ArrayList<>();
-        PeintureBDD peintureBDD = new PeintureBDD();
-        peintureList = peintureBDD.listeAllPeinture();
-        return peintureList;
+    public static ArrayList<Oeuvre> test () throws SQLException {
+        ArrayList<Oeuvre> oeuvreList = new ArrayList<>();
+        OeuvreBDD oeuvreBDD = new OeuvreBDD();
+        oeuvreList = oeuvreBDD.listeAllOeuvre();
+        return oeuvreList;
     }
 
     public static void main(String[] args) throws SQLException {
         System.out.println("OOOOOOOOOOOOOOOO");
-        for(Peinture p : test()){
+        for(Oeuvre p : test()){
             System.out.println(p.getName());
         }
     }
