@@ -70,4 +70,16 @@ public class OeuvreObjet implements OeuvreInterface {
     public Oeuvre creatOeuvreObject(ResultSet resultSet){
         return null;
     }
+
+    @Override
+    public ArrayList<Oeuvre> getOeuvreBySalle(String nameSalle) {
+        ArrayList<Oeuvre> liste =new ArrayList<>();
+        for (Oeuvre peinturefind : oeuvreList){
+            if (peinturefind.getNameSalle() == nameSalle){
+                liste.add(peinturefind);
+                return liste;
+            }
+        }
+        return null;
+    }
 }

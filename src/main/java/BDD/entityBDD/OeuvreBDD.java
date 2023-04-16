@@ -16,7 +16,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
         jbdcConnection = getConnect();
         ArrayList<Oeuvre> oeuvreList = new ArrayList<>();
         Statement statement = jbdcConnection.createStatement();
-        ResultSet resultSet = statement.executeQuery("select * from Peinture");
+        ResultSet resultSet = statement.executeQuery("select * from Oeuvre");
         while (resultSet.next()){
             Oeuvre oeuvre = creatOeuvreObject(resultSet);
             oeuvreList.add(oeuvre);
@@ -29,8 +29,8 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
     @Override
     public boolean insertOeuvre(Oeuvre oeuvre) throws SQLException {
         jbdcConnection= getConnect();
-        String insert = "INSERT INTO peinture( name, photo, estimationPrice, description, dateCreation, nameArtiste) " +
-                "VALUES (?,?,?,?,?,?)";
+        String insert = "INSERT INTO Oeuvre( name, photo, estimationPrice, description, dateCreation, nameArtiste,nameSalle) " +
+                "VALUES (?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = jbdcConnection.prepareStatement(insert);
         preparedStatement.setString(1, oeuvre.getName());
         preparedStatement.setString(2, oeuvre.getPhoto());
@@ -38,6 +38,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
         preparedStatement.setString(4, oeuvre.getDescription());
         preparedStatement.setDate(5, (java.sql.Date) oeuvre.getDateCreation());
         preparedStatement.setString(6, oeuvre.getNameArtiste());
+        preparedStatement.setString(7, oeuvre.getNameSalle());
 
         boolean rowInsert = preparedStatement.executeUpdate()>0;
         preparedStatement.close();
@@ -47,7 +48,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
     @Override
     public  boolean findoeuvre(Oeuvre oeuvre) throws SQLException {
         jbdcConnection=getConnect();
-        String select = "SELECT * FROM Peinture WHERE name=?";
+        String select = "SELECT * FROM Oeuvre WHERE name=?";
         PreparedStatement preparedStatement =jbdcConnection.prepareStatement(select);
         preparedStatement.setString(1, oeuvre.getName());
 
@@ -59,7 +60,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
     @Override
     public boolean updateOeuvre(Oeuvre oeuvre) throws SQLException {
         jbdcConnection=getConnect();
-        String update = "UPDATE peinture SET name=?,photo=?,estimationPrice=?,description=?,dateCreation=?,nameArtiste=? WHERE name=?";
+        String update = "UPDATE Oeuvre SET name=?,photo=?,estimationPrice=?,description=?,dateCreation=?,nameArtiste=?, nameSalle=? WHERE name=?";
         PreparedStatement preparedStatement = jbdcConnection.prepareStatement(update);
         preparedStatement.setString(1, oeuvre.getName());
         preparedStatement.setString(2, oeuvre.getPhoto());
@@ -67,7 +68,8 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
         preparedStatement.setString(4, oeuvre.getDescription());
         preparedStatement.setDate(5, (java.sql.Date) oeuvre.getDateCreation());
         preparedStatement.setString(6, oeuvre.getNameArtiste());
-        preparedStatement.setString(7, oeuvre.getName());
+        preparedStatement.setString(7, oeuvre.getNameSalle());
+        preparedStatement.setString(8, oeuvre.getName());
 
         boolean rowInsert = preparedStatement.executeUpdate()>0;
         preparedStatement.close();
@@ -78,7 +80,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
     @Override
     public  boolean deleteOeuvre(String name) throws SQLException {
         jbdcConnection= getConnect();
-        String delet = "DELETE FROM peinture WHERE name = ?";
+        String delet = "DELETE FROM Oeuvre WHERE name = ?";
         PreparedStatement preparedStatement = jbdcConnection.prepareStatement(delet);
         preparedStatement.setString(1, name);
 
@@ -92,7 +94,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
     public Oeuvre getOeuvreById(int id) {
 
         Oeuvre oeuvre =null;
-        String select="SELECT * FROM Peinture WHERE Id=?";
+        String select="SELECT * FROM Oeuvre WHERE Id=?";
 
         try{
             jbdcConnection=getConnect();
@@ -112,7 +114,7 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
     public Oeuvre getOeuvreByName(String name) {
 
         Oeuvre oeuvre =null;
-        String select="SELECT * FROM Peinture WHERE name=?";
+        String select="SELECT * FROM Oeuvre WHERE name=?";
 
         try{
             jbdcConnection=getConnect();
@@ -128,6 +130,28 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
         }
         return oeuvre;
     }
+    @Override
+    public ArrayList<Oeuvre> getOeuvreBySalle(String nameSalle) {
+
+        ArrayList<Oeuvre> arrayList = new ArrayList<>();
+        String select="SELECT * FROM Oeuvre WHERE nameSalle=?";
+
+        try{
+            jbdcConnection=getConnect();
+            PreparedStatement st = jbdcConnection.prepareStatement(select);
+            st.setString(1, nameSalle);
+            ResultSet resultSet=st.executeQuery();
+            while(resultSet.next()){
+                Oeuvre oeuvre = creatOeuvreObject(resultSet);
+                arrayList.add(oeuvre);
+
+            }
+            deconnect();
+        }catch (Exception ignored){
+
+        }
+        return arrayList;
+    }
 
 
     @Override
@@ -139,8 +163,9 @@ public class OeuvreBDD extends Bdd implements OeuvreInterface {
         String description = resultSet.getString("description");
         Date dateCreation = resultSet.getDate("dateCreation");
         String nameArtiste = resultSet.getString("nameArtiste");
+        String nameSalle = resultSet.getString("nameSalle");
 
-        return new Oeuvre(name, photo,description, Float.parseFloat(estimationPrice), dateCreation, nameArtiste);
+        return new Oeuvre(name, photo,description, Float.parseFloat(estimationPrice), dateCreation, nameArtiste, nameSalle);
     }
 
 

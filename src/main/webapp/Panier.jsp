@@ -68,6 +68,7 @@
       </div>
     </div>
   </nav>
+  <div class="container text-center">
   <h1>Panier</h1>
       <table>
         <tr>
@@ -88,6 +89,7 @@
           <th colspan="3">Total</th>
           <th>${sessionScope.panier.prixTotal} €</th>
         </tr>
+
       </table>
       <br>
       <h1>Paiement</h1>
@@ -107,5 +109,6 @@
 
         <input type="submit" value="Payer">
       </form>
+  </div>
   </body>
   </html>

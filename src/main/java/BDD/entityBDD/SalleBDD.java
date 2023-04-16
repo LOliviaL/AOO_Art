@@ -50,9 +50,10 @@ public class SalleBDD extends Bdd implements SalleInterface {
 
     public Salle creatSalleObject(ResultSet resultSet) throws SQLException {
         String name = resultSet.getString("name");
-        int nbrPlace = Integer.parseInt(resultSet.getString("nbrPlace"));
+        String nameExposition = resultSet.getString("nameExposition");
+        int nbrPlacen = Integer.parseInt(resultSet.getString("nbrPlace"));
 
-        return new Salle(name, nbrPlace) ;
+        return new Salle(name, nbrPlacen, nameExposition) ;
     }
 
 }

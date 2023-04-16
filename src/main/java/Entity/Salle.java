@@ -6,9 +6,12 @@ public class Salle{
     private static  String name;
     private static int nbrPlace;
 
-    public Salle(String name,int nbrPlace) {
+    private static String nameExposition;
+
+    public Salle(String name,int nbrPlace, String nameExposition) {
         this.name = name;
         this.nbrPlace=nbrPlace;
+        this.nameExposition= nameExposition;
     }
 
     public String getName() {
@@ -24,6 +27,14 @@ public class Salle{
 
     }
 
+    public String getNameExposition() {
+        return this.nameExposition;
+    }
+
+    public void setNameExposition(String nameExposition) {
+        this.nameExposition = nameExposition;
+
+    }
 
 
 

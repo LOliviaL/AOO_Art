@@ -35,8 +35,9 @@ public class EditOeuvreServlet extends HttpServlet {
         String description = request.getParameter("description");
         String dateCreation = request.getParameter("dateCreation");
         String nameArtiste = null;
+        String nameSalle = null;
 
-        Oeuvre newpeintur= new Oeuvre(name, photo,description, Float.parseFloat(estimationPrice), Date.valueOf(dateCreation), nameArtiste);
+        Oeuvre newpeintur= new Oeuvre(name, photo,description, Float.parseFloat(estimationPrice), Date.valueOf(dateCreation), nameArtiste, nameSalle);
         OeuvreBDD oeuvreBDD =new OeuvreBDD();
         boolean status = oeuvreBDD.updateOeuvre(newpeintur);
 

@@ -190,12 +190,59 @@
     color: #fff; }
   .actions li[aria-disabled="false"] ~ li a:hover {
     background: #849963; }
-
+  .logo{
+      border-radius: 100%;
+      width: 90px;
+      height: 90px;
+  }
+  .container-fluid  {
+      height: 40px;
+      margin-left: 20px;
+  }
 
 
 </style>
+
 </head>
-<body>
+
+<div>
+<nav class="navbar navbar-expand-lg bg-light" style="background-color: lightgray; padding-bottom: 50px">
+    <div class="container-fluid" style="padding-top: 40px">
+        <a  href="Homepage.jsp">
+            <img class="logo" src="https://zupimages.net/up/23/11/7574.png">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Homepage.jsp" style="font-family:'Hoefler Text', sans-serif; font-size: 25px">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="AllOeuvres.jsp" style="font-family:'Hoefler Text', sans-serif; font-size: 25px">Oeuvres</a>
+                </li>
+            </ul>
+
+
+            <form class="d-flex" style="padding-right: 10%">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Profil.jsp">Mon Profil</a></li>
+                            <li><a class="dropdown-item" href="MesOeuvre.jsp">Mes Oeuvres</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.jsp">Déconnection</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </form>
+
+        </div>
+    </div>
+</nav>
 <div class="wrapper">
   <form action="" id="wizard">
     <h2></h2>
@@ -204,38 +251,42 @@
 
         <div class="form-content" >
           <div class="form-header">
-            <h3>Crée une exposition</h3>
+            <h3>Editer une exposition</h3>
           </div>
           <p>Please fill with your details</p>
           <div class="form-row">
 
             <div class="form-holder w-100">
-<p> titre </p>
+                <p> titre </p>
               <input type="text" placeholder="Exposition 1" class="form-control">
             </div>
 
             <div class="form-holder">
-<p> date debut </p>
+                    <p> date debut </p>
               <input type="text" placeholder="12-08-2022" class="form-control">
             </div>
-<p> date fin </p>
+            <p> date fin </p>
             <div class="form-holder">
               <input type="text" placeholder="12-08-2024" class="form-control">
             </div>
           </div>
           <div class="form-row">
             <div class="form-holder">
-<p> nbr de place </p>
+                    <p> nbr de place </p>
               <input type="text" placeholder="700" class="form-control">
             </div>
           </div>
- class="form-row">
+
             <div class="form-holder">
-<p> list des salle format : [],[] </p>
+                        <p> list des salle format : [],[] </p>
               <input type="text" placeholder="[Salle 1],[Salle 2], [Salle 3]" class="form-control">
             </div>
           </div>
+          <button type="button" class="btn btn-outline-succes">Edit</button>
         </div>
+
+    </section>
+  </form></div>
       </div>
     </section>
 

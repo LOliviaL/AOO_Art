@@ -12,6 +12,8 @@ public class Oeuvre {
 
     private static String nameArtiste;
 
+    private static String nameSalle;
+
     public  int getId(){
 
         return this.Id;
@@ -65,13 +67,22 @@ public class Oeuvre {
 
         this.nameArtiste=nameArtiste;
     }
+    public String getNameSalle(){
 
-    public Oeuvre(String name, String photo, String description, float estimationPrice, Date dateCreation, String nameArtiste) {
+        return this.nameSalle;
+    }
+    public void setNameSalle(String nameSalle){
+
+        this.nameSalle=nameSalle;
+    }
+
+    public Oeuvre(String name, String photo, String description, float estimationPrice, Date dateCreation, String nameArtiste, String nameSalle) {
         this.name = name;
         this.photo=photo;
         this.description=description;
         this.estimationPrice= estimationPrice;
         this.dateCreation= dateCreation;
         this.nameArtiste=nameArtiste;
+        this.nameSalle =nameSalle;
     }
 }

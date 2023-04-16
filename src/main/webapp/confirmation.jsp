@@ -68,30 +68,35 @@
     </div>
   </div>
 </nav>
+<form>
+<div class="container text-center">
+  <h1>Confirmation de paiement</h1>
+  <p>Votre paiement a été accepté.</p>
+  <p>Voici les détails de votre commande :</p>
+  <table>
+    <tr>
+      <th>Nom de l'article</th>
+      <th>Prix unitaire</th>
+      <th>Quantité</th>
+      <th>Prix total</th>
+    </tr>
+    <c:forEach items="${sessionScope.panier.articles}" var="article">
+      <tr>
+        <td>${article.name}</td>
+        <td>${article.estimationPrice} €</td>
+        <td>${article.quantite}</td>
+        <td>${article.prixTotal} €</td>
+      </tr>
+    </c:forEach>
+    <tr>
+      <th colspan="3">Total</th>
+      <th>${sessionScope.panier.prixTotal} €</th>
+    </tr>
+  </table>
+  <p>Merci pour votre achat !</p>
 
-        <h1>Confirmation de paiement</h1>
-        <p>Votre paiement a été accepté.</p>
-        <p>Voici les détails de votre commande :</p>
-        <table>
-          <tr>
-            <th>Nom de l'article</th>
-            <th>Prix unitaire</th>
-            <th>Quantité</th>
-            <th>Prix total</th>
-          </tr>
-          <c:forEach items="${sessionScope.panier.articles}" var="article">
-            <tr>
-              <td>${article.nom}</td>
-              <td>${article.prix} €</td>
-              <td>${article.quantite}</td>
-              <td>${article.prixTotal} €</td>
-            </tr>
-          </c:forEach>
-          <tr>
-            <th colspan="3">Total</th>
-            <th>${sessionScope.panier.prixTotal} €</th>
-          </tr>
-        </table>
-        <p>Merci pour votre achat !</p>
+
+</div>
+</form>
         </body>
         </html>

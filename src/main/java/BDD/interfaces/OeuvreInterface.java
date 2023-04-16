@@ -23,6 +23,7 @@ public interface OeuvreInterface {
      Oeuvre getOeuvreByName(String name);
 
     Oeuvre creatOeuvreObject(ResultSet resultSet) throws SQLException;
+    ArrayList<Oeuvre> getOeuvreBySalle(String nameSalle);
 
 
 
