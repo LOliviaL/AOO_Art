@@ -25,7 +25,7 @@
         <servlet-class>com.example.testb.MesOeuvreServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>tousoeuvre</servlet-name>
+        <servlet-name>outmanoeuvre</servlet-name>
         <servlet-class>com.example.testb.TousOeuvreServlet</servlet-class>
     </servlet>
     <servlet>
@@ -35,6 +35,18 @@
     <servlet>
         <servlet-name>deletpeinture</servlet-name>
         <servlet-class>com.example.testb.DeleteOeuvreServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExpositionServlet</servlet-name>
+        <servlet-class>com.example.testb.ExpositionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PanierServlet</servlet-name>
+        <servlet-class>com.example.testb.PanierServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>paiementservlet</servlet-name>
+        <servlet-class>com.example.testb.PaiementServlet</servlet-class>
     </servlet>
 
 
@@ -60,7 +72,7 @@
         <url-pattern>/moeuvre</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>tousoeuvre</servlet-name>
+        <servlet-name>outmanoeuvre</servlet-name>
         <url-pattern>/oeuvre</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -70,6 +82,18 @@
     <servlet-mapping>
         <servlet-name>deletpeinture</servlet-name>
         <url-pattern>/deleto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExpositionServlet</servlet-name>
+        <url-pattern>/exposition</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PanierServlet</servlet-name>
+        <url-pattern>/panier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>paiementservlet</servlet-name>
+        <url-pattern>/pavement</url-pattern>
     </servlet-mapping>
 
 

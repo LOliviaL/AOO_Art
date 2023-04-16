@@ -72,9 +72,7 @@
     </div>
   </div>
 </nav>
-
-  <a href="/oeuvre" ><button class="btn btn-primary btn-sm">Actualiser Page</button></a>
-
+<form action="outmanoeuvre" method="get">
   <div class="container mb-3">
 
     <table class="table">
@@ -89,41 +87,40 @@
         <th scope="col">Nom d'Artiste</th>
       </tr>
       </thead>
-      <form action="oeuvre" method="get">
+
       <tbody>
-      <c:forEach var="item" items="${listoeuvre}">
-      <tr>
+      <c:forEach var="oeuvre" items="${listoeuvre}">
+        <tr>
           <th scope="row">
-            <c:out value="${item.id}" />
-          </th>
-          <th scope="row">
-            <c:out value="${item.name}" />
+            <c:out value="${oeuvre.name}"/>
           </th>
           <th>
-              <c:out value="${item.photo}" />
+            <c:out value="${oeuvre.photo}" />
           </th>
           <th>
-              <c:out value="${item.estimationPrice}" />
+            <c:out value="${oeuvre.estimationPrice}" />
           </th>
-            <th>
-            <c:out value="${item.dateCreation}" />
-            </th>
-            <th>
-            <c:out value="${item.description}" />
-            </th>
-            <th>
-            <c:out value="${item.nameArtiste}" />
-            </th>
-        <td>
-          <a href="Panier.jsp">
-            <button class="btn btn-primary btn-sm">Acheter</button>
-          </a>
-        </td>
-      </tr>
-          </c:forEach>
+          <th>
+            <c:out value="${oeuvre.dateCreation}" />
+          </th>
+          <th>
+            <c:out value="${oeuvre.description}" />
+          </th>
+          <th>
+            <c:out value="${oeuvre.nameArtiste}" />
+          </th>
+          <td>
+            <a href="Panier.jsp">
+              <button class="btn btn-primary btn-sm">Acheter</button>
+            </a>
+          </td>
+        </tr>
+      </c:forEach>
       </tbody>
-      </form>
     </table>
   </div>
+
+
+</form>
 </body>
 </html>
