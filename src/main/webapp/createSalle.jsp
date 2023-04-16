@@ -250,7 +250,7 @@
 
         <div class="form-content" >
           <div class="form-header">
-            <h3>Crée une exposition</h3>
+            <h3>Crée une Salle</h3>
           </div>
           <p>Please fill with your details</p>
           <div class="form-row">
@@ -260,10 +260,10 @@
             </div>
 
             <div class="form-holder">
-              <input type="text" placeholder="date début" class="form-control">
+              <input type="text" placeholder="liste des oeuvre format :[],[]" class="form-control">
             </div>
             <div class="form-holder">
-              <input type="text" placeholder="date de fin" class="form-control">
+              <input type="text" placeholder="nom d'exposition rattacher" class="form-control">
             </div>
           </div>
           <div class="form-row">
