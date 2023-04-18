@@ -10,5 +10,12 @@ public interface SalleInterface {
     ArrayList<Salle> listeAllSalle () throws SQLException;
 
     Salle getSalleByName(String name);
+    ArrayList<Salle> getSalleByNameExposition(String nameExposition);
+
+    boolean insertSalle(Salle salle) throws SQLException;
+
+    boolean updateSalle(Salle salle) throws SQLException;
+
+    boolean deleteSalle(String name) throws SQLException;
 
 }

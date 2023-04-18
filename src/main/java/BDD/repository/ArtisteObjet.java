@@ -21,9 +21,8 @@ public class ArtisteObjet implements ArtisteInterface {
 
     @Override
     public boolean findArtiste(Artiste artiste)  {
-        Artiste artistefind = null;
         for (Artiste a : artisteList){
-            if (a.getName() == artistefind.getName()){
+            if (a.getName() == artiste.getName()){
                 return true;
             }
         }

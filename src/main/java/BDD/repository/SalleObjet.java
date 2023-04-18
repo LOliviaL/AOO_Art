@@ -23,4 +23,38 @@ public class SalleObjet implements SalleInterface {
         }
         return null;
     }
+
+    @Override
+    public ArrayList<Salle> getSalleByNameExposition(String nameExposition) {
+        ArrayList<Salle> liste =new ArrayList<>();
+        for (Salle sallefind : sallesList){
+            if (sallefind.getNameExposition() == nameExposition){
+                liste.add(sallefind);
+                return liste;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean insertSalle(Salle salle) throws SQLException {
+        sallesList.add(salle);
+        return true;
+    }
+
+    @Override
+    public boolean updateSalle(Salle salle) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean deleteSalle(String name) throws SQLException {
+        for (Salle sallefind : sallesList){
+            if (sallefind.getName() == name){
+                sallesList.remove(sallefind);
+                return true;
+            }
+        }
+        return false;
+    }
 }
